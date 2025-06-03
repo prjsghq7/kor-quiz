@@ -5,21 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>한글 단어 퀴즈</title>
     <link href="/assets/styles/common.css" rel="stylesheet" type="text/css">
+    <link href="/home/assets/styles/index.css" rel="stylesheet" type="text/css">
     <script src="/assets/scripts/common.js" type="text/javascript"></script>
     <script defer src="/assets/scripts/dialog.js" type="text/javascript"></script>
     <script defer src="/assets/scripts/night-mode.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="overlay"></div>
-<div id="main-card">
-    <h1 class="title">한글 단어 퀴즈</h1>
-    <div class="word-info">
-        <p><strong>품사:</strong> 명사</p>
-        <p><strong>뜻:</strong> 어떤 사물의 이름을 나타내는 말</p>
-    </div>
-    <input type="text" placeholder="정답을 입력하세요" class="answer-input" />
-    <button class="-object-button --brown --symbol-1">제출</button>
-    <p class="question-counter">1 / 10</p>
+<div id="main-card" class="index">
+    <h1 class="title">환영합니다! 🇰🇷 단어 퀴즈</h1>
+
+    <!-- ✅ Google 로그인 버튼 -->
+    <a href="/oauth2/authorization/google" class="-object-button --light">
+        Google 계정으로 로그인
+    </a>
 </div>
 </body>
 </html>

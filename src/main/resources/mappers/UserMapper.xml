@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kgh.korquiz.mappers.UserMapper">
+
+    <insert id="insertUser"
+            useGeneratedKeys="true"
+            keyColumn="index"
+            keyProperty="index">
+        INSERT INTO `kor-quiz`.`users`
+        (`email`,`provider`, `provider_id`,
+         `profile_img`, `nickname`, `birth`,
+         `gender`, `term_agreed_at`,
+         `is_admin`, `is_deleted`,`is_suspended`,
+         `created_at`, `modified_at`)
+        VALUES (#{email}, #{provider}, #{providerId},
+                #{profileImg}, #{nickname}, #{birth},
+                #{gender},  #{termAgreedAt},
+                #{isAdmin},  #{isDeleted}, #{isSuspended},
+                #{createdAt}, #{modifiedAt})
+    </insert>
+</mapper>

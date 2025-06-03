@@ -32,6 +32,11 @@ body {
     color: var(--text-dark);
 }
 
+a[href] {
+    text-decoration: none;
+    color: initial;
+}
+
 button, input, select, textarea {
     background-color: initial;
     border: none;

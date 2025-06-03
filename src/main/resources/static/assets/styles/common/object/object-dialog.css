@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 body:has(.-object-dialog.visible) {
     overflow: hidden;
 }
