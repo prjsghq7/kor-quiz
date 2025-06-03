@@ -1,0 +1,139 @@
+/* =========================================
+   Button Colors
+========================================= */
+:root {
+    --btn-brown-top: #d4af7f;
+    --btn-brown-bottom: #c29658;
+    --btn-brown-border: var(--button-border);
+    --btn-brown-deco: var(--button-deco);
+
+    --btn-red-top: #e57373;
+    --btn-red-bottom: #d32f2f;
+    --btn-red-border: #a12727;
+    --btn-red-deco: #7f1a1a;
+
+    --btn-blue-top: #64b5f6;
+    --btn-blue-bottom: #1976d2;
+    --btn-blue-border: #175391;
+    --btn-blue-deco: #12457a;
+
+    --btn-green-top: #81c784;
+    --btn-green-bottom: #388e3c;
+    --btn-green-border: #2f6d30;
+    --btn-green-deco: #245424;
+
+    --btn-gold-top: #f2c46d;
+    --btn-gold-bottom: #b88b33;
+    --btn-gold-border: #8f6727;
+    --btn-gold-deco: #6c4e1c;
+
+    --btn-light-top: #fefefe;
+    --btn-light-bottom: #e6e6e6;
+    --btn-light-border: #cccccc;
+    --btn-light-deco: #999999;
+
+    --button-text: #2d1a05;
+    --button-border: #5c3b1e;
+    --button-inner-glow: #e8d1a4;
+    --button-hover-top: #a77c50;
+    --button-hover-bottom: #855d38;
+    --button-active-top: #c9a35e;
+    --button-active-bottom: #a4793c;
+    --button-deco: #5c3b1e;
+
+    --overlay-bg-color: #ffffff55;
+    --input-bg-color: #d4b280;
+
+    /* =========================================
+       Text Colors
+    ========================================= */
+    --text-dark: #3a2c1a;
+    --text-medium: #4b3c2a;
+    --text-light: #5a4b34;
+
+    /* =========================================
+       Background Colors & Pattern
+    ========================================= */
+    --base-bg: #fffefb;
+    --base-pattern-a: rgba(240,240,230,0.95);
+    --base-pattern-b: rgba(250,250,245,0.95);
+
+    --shadow-focus: #e4d1ad80;
+    --border-brown: #a67c52;
+    --border-focus: #8c6d3f;
+    --border-hover: #c3a46f;
+
+    /* =========================================
+       Toggle Button
+    ========================================= */
+    --toggle-bg: #fff;
+    --toggle-text: #000;
+    --toggle-border: #aaa;
+}
+
+/* =========================================
+   Night Mode Overrides
+========================================= */
+.night-mode {
+    --btn-brown-top: #5c3a21;
+    --btn-brown-bottom: #3d2815;
+    --btn-brown-border: var(--button-border);
+    --btn-brown-deco: var(--button-deco);
+
+    --btn-red-top: #8b1e1e;
+    --btn-red-bottom: #5a1212;
+    --btn-red-border: #912020;
+    --btn-red-deco: #7d1a1a;
+
+    --btn-blue-top: #1d3c6e;
+    --btn-blue-bottom: #0e274f;
+    --btn-blue-border: #0f437a;
+    --btn-blue-deco: #0d3a6c;
+
+    --btn-green-top: #1f4d1f;
+    --btn-green-bottom: #123312;
+    --btn-green-border: #245d27;
+    --btn-green-deco: #1c4c1e;
+
+    --btn-gold-top: #6a4b1a;
+    --btn-gold-bottom: #4e3712;
+    --btn-gold-border: #73571e;
+    --btn-gold-deco: #594118;
+
+    --btn-light-top: #444444;
+    --btn-light-bottom: #333333;
+    --btn-light-border: #666666;
+    --btn-light-deco: #999999;
+
+    --button-text: #ffffff;
+    --button-border: #e4d1ad;
+    --button-inner-glow: #c7a86e;
+
+    --button-hover-top: #a77c50;
+    --button-hover-bottom: #855d38;
+
+    --button-active-top: #a87d44;
+    --button-active-bottom: #7d5e33;
+
+    --button-deco: #ffffff;
+
+    --overlay-bg-color: #00000055;
+    --input-bg-color: #5f4b2f;
+
+    --text-dark: #f0e8d9;
+    --text-medium: #f0e8d9;
+    --text-light: #f0e8d9;
+
+    --base-bg: #2a2623;
+    --base-pattern-a: #2e2924;
+    --base-pattern-b: #39322d;
+
+    --shadow-focus: #ba9e6380;
+    --border-brown: #d4b280;
+    --border-focus: #b4975f;
+    --border-hover: #98794c;
+
+    --toggle-bg: #333;
+    --toggle-text: #fff;
+    --toggle-border: #777;
+}

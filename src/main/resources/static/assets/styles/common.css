@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+@import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/Hanna.css');
+
+@import "common/common-color.css";
+@import "common/object/object-button.css";
+@import "common/object/object-dialog.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Hanna', sans-serif;
+
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/overlay-seamless-pattern.png');
+    background-repeat: repeat;
+    background-size: 20rem 20rem;
+    background-attachment: scroll;
+    background-position: top left;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--base-bg);
+    color: var(--text-dark);
+}
+
+button, input, select, textarea {
+    background-color: initial;
+    border: none;
+    color: inherit;
+    font: inherit;
+    letter-spacing: initial;
+    line-height: initial;
+    margin: initial;
+    outline: initial;
+    padding: initial;
+    padding-block: initial;
+    padding-inline: initial;
+    text-align: initial;
+    text-indent: initial;
+    text-rendering: initial;
+    text-shadow: initial;
+    text-transform: initial;
+    word-spacing: initial;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font: inherit;
+    margin-block: initial;
+    margin-inline: initial;
+}
+
+#overlay {
+    position: absolute;
+    inset: 0;
+    background-color: var(--overlay-bg-color);
+    z-index: 0;
+}
+
+#main-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 2.5rem;
+    width: 30rem;
+    max-width: 90%;
+    border: 0.1875rem solid var(--border-brown);
+
+    background-color: var(--base-bg);
+    /*background-image:*/
+    /*        url('../images/card-hanji-texture.png'),*/
+    /*        repeating-linear-gradient(*/
+    /*                45deg,*/
+    /*                var(--base-pattern-a),*/
+    /*                var(--base-pattern-a) 0.625rem,*/
+    /*                var(--base-pattern-b) 0.625rem,*/
+    /*                var(--base-pattern-b) 1.25rem*/
+    /*        );*/
+    background-image: url('../images/card-hanji-texture.png');
+    background-blend-mode: multiply;
+    background-size: cover, auto;
+    color: var(--text-dark);
+}
+
+.night-mode #main-card {
+    background-color: #0000004D
+}
+
+.title {
+    font-size: 2.125rem;
+    font-weight: 500;
+}
+
+
+input[type="text"] {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.125rem;
+    font-weight: 500;
+    border: 1px solid var(--border-hover);
+    border-radius: 0.5rem;
+    outline: none;
+    background-color: var(--input-bg-color);
+    color: var(--text-dark);
+}
+
+input[type="text"]:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 2px var(--shadow-focus);
+}
+
+
+.night-toggle {
+    width: 8rem;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 8;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
