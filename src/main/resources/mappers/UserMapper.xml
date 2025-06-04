@@ -4,19 +4,19 @@
 
     <insert id="insertUser"
             useGeneratedKeys="true"
-            keyColumn="index"
-            keyProperty="index">
+            keyColumn="id"
+            keyProperty="id">
         INSERT INTO `kor-quiz`.`users`
         (`email`,`provider`, `provider_id`,
          `profile_img`, `nickname`, `birth`,
          `gender`, `term_agreed_at`,
          `is_admin`, `is_deleted`,`is_suspended`,
          `created_at`, `modified_at`)
-        VALUES (#{email}, #{provider}, #{providerId},
-                #{profileImg}, #{nickname}, #{birth},
-                #{gender},  #{termAgreedAt},
-                #{isAdmin},  #{isDeleted}, #{isSuspended},
-                #{createdAt}, #{modifiedAt})
+        VALUES (#{user.email}, #{user.provider}, #{user.providerId},
+                #{user.profileImg}, #{user.nickname}, #{user.birth},
+                #{user.gender},  #{user.termAgreedAt},
+                #{user.isAdmin},  #{user.isDeleted}, #{user.isSuspended},
+                #{user.createdAt}, #{user.modifiedAt})
     </insert>
 
     <select id="selectUserByProviderId" resultType="com.kgh.korquiz.entities.UserEntity">

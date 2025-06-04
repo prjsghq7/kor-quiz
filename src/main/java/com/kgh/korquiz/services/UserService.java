@@ -40,7 +40,8 @@ public class UserService {
         newUser.setProfileImg(profileImg);
 
         // 임시 정보 (사용자가 추가로 입력해야 하는 항목)
-        newUser.setNickname("temp_" + System.currentTimeMillis());
+        int rand = (int)(Math.random() * 900000) + 100000; // 6자리
+        newUser.setNickname("temp_" + rand);
         newUser.setBirth(LocalDate.of(2000, 1, 1));
         newUser.setGender("M");
 

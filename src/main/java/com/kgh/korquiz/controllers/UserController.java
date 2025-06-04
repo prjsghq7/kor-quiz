@@ -17,9 +17,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    @RequestMapping(value = "/register/extra", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
     public String getLogin() {
-
         return "user/login";
     }
 }
