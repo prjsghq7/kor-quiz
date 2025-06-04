@@ -85,7 +85,28 @@
             <version>3.0.4</version>
             <scope>test</scope>
         </dependency>
+
+
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- OAuth2 Client (구글 로그인 등 외부 인증 처리) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
+        </dependency>
+
+        <!-- (선택) Thymeleaf + Security 연동 -->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+            <version>3.1.1.RELEASE</version>
+        </dependency>
     </dependencies>
+
 
     <build>
         <plugins>

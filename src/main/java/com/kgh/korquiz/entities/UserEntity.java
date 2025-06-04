@@ -3,6 +3,7 @@ package com.kgh.korquiz.entities;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,6 +23,6 @@ public class UserEntity {
     private boolean isAdmin;
     private boolean isDeleted;
     private boolean isSuspended;
-    private LocalDate createdAt;
-    private LocalDate modifiedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
 }

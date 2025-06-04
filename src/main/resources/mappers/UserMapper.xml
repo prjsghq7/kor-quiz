@@ -18,4 +18,43 @@
                 #{isAdmin},  #{isDeleted}, #{isSuspended},
                 #{createdAt}, #{modifiedAt})
     </insert>
+
+    <select id="selectUserByProviderId" resultType="com.kgh.korquiz.entities.UserEntity">
+        SELECT `id` AS 'id',
+               `email` AS 'email',
+               `provider` AS 'provider',
+               `provider_id` AS 'providerId',
+               `profile_img` AS 'profileImg',
+               `nickname` AS 'nickname',
+               `birth` AS 'birth',
+               `gender` AS 'gender',
+               `term_agreed_at` AS 'termAgreedAt',
+               `is_admin` AS 'isAdmin',
+               `is_deleted` AS 'isDeleted',
+               `is_suspended` AS 'isSuspended',
+               `created_at` AS 'createdAt',
+               `modified_at` AS 'modifiedAt'
+        FROM `kor-quiz`.`users`
+        WHERE `provider` = #{provider}
+          AND `provider_id` = #{providerId}
+    </select>
+
+    <select id="selectUserById" resultType="com.kgh.korquiz.entities.UserEntity">
+        SELECT `id` AS 'id',
+               `email` AS 'email',
+               `provider` AS 'provider',
+               `provider_id` AS 'providerId',
+               `profile_img` AS 'profileImg',
+               `nickname` AS 'nickname',
+               `birth` AS 'birth',
+               `gender` AS 'gender',
+               `term_agreed_at` AS 'termAgreedAt',
+               `is_admin` AS 'isAdmin',
+               `is_deleted` AS 'isDeleted',
+               `is_suspended` AS 'isSuspended',
+               `created_at` AS 'createdAt',
+               `modified_at` AS 'modifiedAt'
+        FROM `kor-quiz`.`users`
+        WHERE `id` = #{id}
+    </select>
 </mapper>

@@ -17,7 +17,8 @@
 .--symbol-1,
 .--symbol-2,
 .--symbol-3,
-.--symbol-4 {
+.--symbol-4,
+.--symbol-google {
     padding: 0.875rem 3.5rem 0.875rem 3.5rem;
 }
 .night-toggle {
@@ -102,6 +103,18 @@
 
 .night-mode .-object-button.night-toggle::before {
     background-image: url('../../../images/button-symbol/button-symbol-moon.png');
+}
+
+.-object-button.--symbol-google::before {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    content: "";
+    background-size: contain;
+    width: 3rem;
+    height: 3rem;
+    background-image: url('../../../images/button-symbol/button-symbol-google.png');
 }
 
 .-object-button:hover {
