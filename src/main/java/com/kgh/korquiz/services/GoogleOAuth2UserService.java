@@ -22,18 +22,17 @@ public class GoogleOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     }
 
     @Override
-    public OAuth2User loadUser(OAuth2UserRequest request) throws OAuth2AuthenticationException {
-        OAuth2User oauthUser = delegate.loadUser(request);
+    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 
-        String provider = request.getClientRegistration().getRegistrationId(); // "google"
+        OAuth2User oauthUser = delegate.loadUser(userRequest); // 실제 사용자 정보 요청
+
         String providerId = oauthUser.getAttribute("sub");
-        String email = oauthUser.getAttribute("email");
-        String profileImg = oauthUser.getAttribute("picture");
-
-        UserEntity user = userService.findOrCreate(provider, providerId, email, profileImg);
+        if (providerId == null) {
+            throw new IllegalArgumentException("OAuth2 응답에 'sub'이 존재하지 않습니다.");
+        }
 
         return new DefaultOAuth2User(
-                Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")),
+                Collections.singleton(new SimpleGrantedAuthority("ROLE_TEMP")),
                 oauthUser.getAttributes(),
                 "sub"
         );

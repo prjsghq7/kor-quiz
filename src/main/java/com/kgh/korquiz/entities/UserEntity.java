@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 public class UserEntity {
     private int id;
     private String email;
+    private String name;
     private String provider;
     private String providerId;
     private String profileImg;

@@ -7,12 +7,12 @@
             keyColumn="id"
             keyProperty="id">
         INSERT INTO `kor-quiz`.`users`
-        (`email`,`provider`, `provider_id`,
+        (`email`, `name`,`provider`, `provider_id`,
          `profile_img`, `nickname`, `birth`,
          `gender`, `term_agreed_at`,
          `is_admin`, `is_deleted`,`is_suspended`,
          `created_at`, `modified_at`)
-        VALUES (#{user.email}, #{user.provider}, #{user.providerId},
+        VALUES (#{user.email}, #{user.name}, #{user.provider}, #{user.providerId},
                 #{user.profileImg}, #{user.nickname}, #{user.birth},
                 #{user.gender},  #{user.termAgreedAt},
                 #{user.isAdmin},  #{user.isDeleted}, #{user.isSuspended},
@@ -22,6 +22,7 @@
     <select id="selectUserByProviderId" resultType="com.kgh.korquiz.entities.UserEntity">
         SELECT `id` AS 'id',
                `email` AS 'email',
+               `name` AS 'name',
                `provider` AS 'provider',
                `provider_id` AS 'providerId',
                `profile_img` AS 'profileImg',
@@ -42,6 +43,7 @@
     <select id="selectUserById" resultType="com.kgh.korquiz.entities.UserEntity">
         SELECT `id` AS 'id',
                `email` AS 'email',
+               `name` AS 'name',
                `provider` AS 'provider',
                `provider_id` AS 'providerId',
                `profile_img` AS 'profileImg',
