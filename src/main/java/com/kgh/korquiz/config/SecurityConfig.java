@@ -25,7 +25,7 @@ public class SecurityConfig {
                 .oauth2Login(oauth -> oauth
                         .userInfoEndpoint(userInfo -> userInfo
                                 .userService(googleOAuth2UserService)
-                        )
+                        ).successHandler(oAuth2LoginSuccessHandler)
                 );
         return http.build();
     }

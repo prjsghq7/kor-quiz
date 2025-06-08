@@ -1,28 +1,63 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>추가 정보 입력</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>회원가입[추가 정보 입력]</title>
+    <link href="/assets/styles/common.css" rel="stylesheet" type="text/css">
+    <link href="/user/assets/styles/register-extra.css" rel="stylesheet" type="text/css">
+    <script src="/assets/scripts/common.js" type="text/javascript"></script>
+    <script defer src="/assets/scripts/dialog.js" type="text/javascript"></script>
+    <script defer src="/assets/scripts/night-mode.js" type="text/javascript"></script>
 </head>
 <body>
-<h2 th:text="|${email} 님, 구글 계정 인증이 확인되었습니다.|"></h2>
-<p>아래 추가 정보를 입력하여 회원가입을 완료해주세요.</p>
+<div id="overlay"></div>
+<div id="main-card" class="register-extra">
+    <h1 class="title">회원 가입 [추가 정보 입력]</h1>
+    <span class="caption">
+        <strong th:text="${email}"></strong>님
+        <strong th:text="${provider}"></strong> 계정 인증이 확인 되었습니다.
+    </span>
+    <span class="caption">아래 추가 정보를 입력하여 회원가입을 완료해주세요.</span>
 
-<form method="post" action="/user/register/extra">
-    <label>닉네임</label>
-    <input type="text" name="nickname" placeholder="닉네임" maxlength="15" required/><br>
+    <div class="line"></div>
 
-    <label>생년월일</label>
-    <input type="date" name="birth" required/><br>
+    <form novalidate id="registerExtraForm">
+        <div class="input-pair">
+            <label class="label" for="nickname">닉네임</label>
+            <input type="text" id="nickname" name="nickname" placeholder="닉네임" maxlength="15" required/><br>
+            <span class="warning"></span>
+        </div>
 
-    <label>성별</label>
-    <select name="gender" required>
-        <option value="">선택</option>
-        <option value="M">남성</option>
-        <option value="F">여성</option>
-    </select><br>
+        <div class="input-pair-wrapper">
+            <div class="input-pair">
+                <label class="label" for="birth">생년월일</label>
+                <input type="date" id="birth" name="birth" required/><br>
+                <span class="warning"></span>
+            </div>
 
-    <button type="submit">가입 완료</button>
-</form>
+            <div class="input-pair two-column">
+                <label class="label">성별</label>
+                <div class="radio-group">
+                    <label class="radio-selector">
+                        <input type="radio" name="gender" value="M" checked>
+                        <span class="caption">남</span>
+                    </label>
+                    <label class="radio-selector">
+                        <input type="radio" name="gender" value="F" >
+                        <span class="caption">여</span>
+                    </label>
+                </div>
+                <span class="warning"></span>
+            </div>
+        </div>
+
+
+        <div class="button-container">
+            <a class="-object-button --symbol-2 --brown" href="/">돌아가기</a>
+            <button class="-object-button --symbol-1 --green" type="submit">가입 완료</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>

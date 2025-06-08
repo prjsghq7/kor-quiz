@@ -26,8 +26,11 @@ public class UserController {
         if (oauthUser == null) {
             return "redirect:/login?error=session_expired";
         }
-
+        oauthUser.getAttributes().forEach((key, value) -> {
+            System.out.println(key + " = " + value);
+        });
         model.addAttribute("email", oauthUser.getAttribute("email"));
+        model.addAttribute("provider", oauthUser.getAttribute("provider"));
         model.addAttribute("name", oauthUser.getAttribute("name"));
         return "user/register-extra"; // 템플릿 파일
     }
