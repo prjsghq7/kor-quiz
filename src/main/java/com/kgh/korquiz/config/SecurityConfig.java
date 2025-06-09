@@ -25,7 +25,7 @@ public class SecurityConfig {
                 .oauth2Login(oauth -> oauth
                         .userInfoEndpoint(userInfo -> userInfo
                                 .userService(googleOAuth2UserService)
-                        ).successHandler(oAuth2LoginSuccessHandler)
+                        ).successHandler(oAuth2LoginSuccessHandler)     //로그인 성공 시 동작할 커스텀 핸들러 지정
                 );
         return http.build();
     }

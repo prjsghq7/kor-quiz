@@ -9,6 +9,7 @@
     <script src="/assets/scripts/common.js" type="text/javascript"></script>
     <script defer src="/assets/scripts/dialog.js" type="text/javascript"></script>
     <script defer src="/assets/scripts/night-mode.js" type="text/javascript"></script>
+    <script defer src="/user/assets/scripts/register-extra.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="overlay"></div>
@@ -23,16 +24,20 @@
     <div class="line"></div>
 
     <form novalidate id="registerExtraForm">
-        <div class="input-pair">
-            <label class="label" for="nickname">닉네임</label>
-            <input type="text" id="nickname" name="nickname" placeholder="닉네임" maxlength="15" required/><br>
-            <span class="warning"></span>
+        <div class="input-pair-wrapper">
+            <div class="input-pair">
+                <label class="label" for="nickname">닉네임</label>
+                <input type="text" id="nickname" name="nickname" autocomplete="off" placeholder="닉네임" maxlength="15" required th:pattern="${T(com.kgh.korquiz.regexes.UserRegex).nickname.pattern}"/>
+                <span class="warning"></span>
+            </div>
+
+            <button class="-object-button --brown" type="button" name="checkNickname">중복 체크</button>
         </div>
 
         <div class="input-pair-wrapper">
             <div class="input-pair">
                 <label class="label" for="birth">생년월일</label>
-                <input type="date" id="birth" name="birth" required/><br>
+                <input type="date" id="birth" name="birth" required th:pattern="${T(com.kgh.korquiz.regexes.UserRegex).birth.pattern}"/>
                 <span class="warning"></span>
             </div>
 

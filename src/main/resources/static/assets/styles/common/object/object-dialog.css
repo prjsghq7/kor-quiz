@@ -22,7 +22,7 @@ body:has(.-object-dialog.visible) {
     z-index: 9;
 }
 
-.-object-dialog.-visible {
+.-object-dialog[data-state-visible] {
     opacity: 1;
     pointer-events: auto;
 }
@@ -53,7 +53,7 @@ body:has(.-object-dialog.visible) {
     z-index: 10;
 }
 
-.-object-dialog > .--modal.-visible {
+.-object-dialog > .--modal[data-state-visible] {
     opacity: 1;
     transform: scale(100%) translate(-50%, -50%);
 }

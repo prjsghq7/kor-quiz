@@ -8,6 +8,11 @@
     justify-content: flex-start;
 }
 
+#main-card.register-extra > .caption > strong {
+    font-size: 1.0625rem;
+    font-weight: 600;
+}
+
 #main-card.register-extra > .line {
     background-color: var(--border-brown);
     width: 100%;
@@ -19,26 +24,28 @@
     align-items: stretch;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1.5rem;
+    justify-content: flex-start;
+}
+
+#registerExtraForm > .input-pair-wrapper {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
     justify-content: flex-start;
 }
 
 #registerExtraForm .input-pair {
-    align-items: center;
+    position: relative;
+
+    align-items: flex-start;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 0.5rem;
     justify-content: flex-start;
 
-    /*height: 2rem;*/
-}
-
-#registerExtraForm .input-pair-wrapper {
-    align-items: stretch;
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    justify-content: flex-start;
+    width: 100%;
 }
 
 #registerExtraForm .input-pair > .label {
@@ -93,7 +100,26 @@
     display: none;
 }
 
+#registerExtraForm > .input-pair-wrapper > .input-pair > .warning {
+    position: absolute;
+    right: 0;
 
+    color: var(--text-warning);
+    font-weight: 500;
+    display: none;
+}
+
+#registerExtraForm > .input-pair-wrapper > .input-pair > .warning[data-state-visible] {
+    display: block;
+}
+
+#registerExtraForm > .input-pair-wrapper > .-object-button {
+    padding: 0 1rem;
+    width: auto;
+    height: 2.75rem;
+    white-space: nowrap;
+    border-radius: 0.125rem;
+}
 
 #registerExtraForm > .button-container {
     align-items: center;

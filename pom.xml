@@ -85,6 +85,11 @@
             <version>3.0.4</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20250107</version>
+        </dependency>
 
 
         <!-- Spring Security -->

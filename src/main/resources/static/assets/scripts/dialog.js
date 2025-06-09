@@ -16,16 +16,16 @@ class Dialog {
      * @return {boolean}
      */
     hide($modal) {
-        $modal.hide();
+        $modal.setVisible(false);
         const index = this.#$modals.indexOf($modal);
         if (index === -1) {
             return false;
         }
         this.#$modals.splice(index, 1);
         if (this.#$modals.length === 0) {
-            this.#$element.hide();
+            this.#$element.setVisible(false);
         }
-        setTimeout(() => $modal.remove(), 1000);
+        setTimeout(() => $modal.setVisible(false), 1000);
         return true;
     }
 
@@ -73,10 +73,10 @@ class Dialog {
             $modal.append($buttonContainer);
         }
         this.#$element.append($modal);
-        this.#$element.show();
+        this.#$element.setVisible(true);
         this.#$modals.push($modal);
         // $modal를 show하는데 50ms 딜레이를 주는 이유는 append 하자마자 show하면 transition이 무시되기 때문, (10ms 보다 50ms가 안전)
-        setTimeout(() => $modal.show(), 50);    //transition 때문에
+        setTimeout(() => $modal.setVisible(true), 50);    //transition 때문에
     }
 
     /**

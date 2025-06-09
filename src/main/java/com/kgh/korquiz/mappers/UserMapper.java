@@ -11,4 +11,6 @@ public interface UserMapper {
     public UserEntity selectUserByProviderId(@Param("provider") String provider, @Param("providerId") String providerId);
 
     public UserEntity selectUserById(@Param("id") int id);
+
+    int selectCountByNickname(@Param(value = "nickname") String nickname);
 }

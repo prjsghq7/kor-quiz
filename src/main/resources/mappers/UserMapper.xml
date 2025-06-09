@@ -59,4 +59,9 @@
         FROM `kor-quiz`.`users`
         WHERE `id` = #{id}
     </select>
+    <select id="selectCountByNickname" resultType="java.lang.Integer">
+        SELECT COUNT(0)
+        FROM `kor-quiz`.`users`
+        WHERE `nickname`= #{nickname}
+    </select>
 </mapper>

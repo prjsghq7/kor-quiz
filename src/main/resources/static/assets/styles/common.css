@@ -77,7 +77,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translate(-50%, -50%);
 
     padding: 2.5rem;
-    width: 35rem;
+    width: 40rem;
     border: 0.1875rem solid var(--border-brown);
 
     background-color: var(--base-bg);
@@ -102,10 +102,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .title {
     font-size: 2.125rem;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 
+input[type="date"],
 input[type="text"] {
     width: 100%;
     padding: 0.4375rem 0.75rem;
@@ -118,8 +119,10 @@ input[type="text"] {
     color: var(--text-dark);
 }
 
+input[type="date"]:focus,
 input[type="text"]:focus {
     border-color: var(--border-focus);
+    outline: 0.125rem solid var(--border-focus);
     box-shadow: 0 0 0 2px var(--shadow-focus);
 }
 

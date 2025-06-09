@@ -2,6 +2,10 @@ package com.kgh.korquiz.services;
 
 import com.kgh.korquiz.entities.UserEntity;
 import com.kgh.korquiz.mappers.UserMapper;
+import com.kgh.korquiz.regexes.UserRegex;
+import com.kgh.korquiz.regexes.user.RegisterResult;
+import com.kgh.korquiz.results.CommonResult;
+import com.kgh.korquiz.results.Result;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -59,5 +63,16 @@ public class UserService {
     /** ID로 유저 조회 (Controller 등에서 사용 가능) */
     public UserEntity findById(int id) {
         return userMapper.selectUserById(id);
+    }
+
+
+
+    public Result isNicknameAvailable(String nickname) {
+        if (!UserRegex.nickname.matches(nickname)) {
+            return CommonResult.FAILURE;
+        }
+        return this.userMapper.selectCountByNickname(nickname) == 0
+                ? CommonResult.SUCCESS
+                : RegisterResult.FAILURE_DUPLICATE_NICKNAME;
     }
 }
