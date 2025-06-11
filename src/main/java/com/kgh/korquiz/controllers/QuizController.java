@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value = "/")
-public class HomeController {
+@RequestMapping(value = "/quiz")
+public class QuizController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
     public String getIndex(HttpSession session) {
-        if (session.getAttribute("signedUser") != null) {
-            return "quiz/index";
+        if (session.getAttribute("signedUser") == null) {
+            return "home/index";
         }
-        return "home/index";
+        return "quiz/index";
     }
 }

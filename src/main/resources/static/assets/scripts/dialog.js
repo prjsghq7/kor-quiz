@@ -67,7 +67,7 @@ class Dialog {
                 $button.innerText = button.caption;
                 // 버튼 클릭시 button 오브젝트를 통해 전달된 onclick 함수 실행, 이때 생성한 $modal 요소를 인자로 전달,
                 // 여기서 전달하는 $modal 요소는 호출자가 임의로 사용할수 있으며 주 목적은 모달을 다시 숨기는데에(dialog.hide) 있음
-                $button.addEventListener('click', () => button.onclick($modal));
+                $button.addEventListener('click', () => button.onClickCallback($modal));
                 $buttonContainer.append($button);
             }
             $modal.append($buttonContainer);
@@ -92,7 +92,7 @@ class Dialog {
             buttons: [
                 {
                     caption: '확인',
-                    onclick: ($modal) => {
+                    onClickCallback: ($modal) => {
                         if (typeof onclick === 'function') {
                             onclick($modal);
                         }

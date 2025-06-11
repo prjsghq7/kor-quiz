@@ -1,5 +1,7 @@
 package com.kgh.korquiz.controllers;
 
+import com.kgh.korquiz.entities.UserEntity;
+import com.kgh.korquiz.results.CommonResult;
 import com.kgh.korquiz.results.Result;
 import com.kgh.korquiz.services.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -38,6 +40,21 @@ public class UserController {
         model.addAttribute("name", oauthUser.getAttribute("name"));
         return "user/register-extra"; // 템플릿 파일
     }
+
+    @RequestMapping(value = "/register/extra", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String postRegisterExtra(HttpSession session,
+                                    UserEntity user) {
+        OAuth2User oauthUser = (OAuth2User) session.getAttribute("oauthUser");
+        Result result = userService.register(user, oauthUser);
+        if (result == CommonResult.SUCCESS) {
+            session.setAttribute("signedUser", user);
+        }
+        JSONObject response = new JSONObject();
+        response.put("result", result.nameToLower());
+        return response.toString();
+    }
+
 
     @RequestMapping(value = "/check-nickname", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

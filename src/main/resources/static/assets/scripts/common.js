@@ -12,6 +12,7 @@ HTMLElement.prototype.isInValid = function () {
  * @param {boolean} b
  * @returns {HTMLElement} */
 HTMLElement.prototype.setInvalid = function (b) {
+    this.removeAttribute(HTMLElement.VALID_ATTR_NAME);
     if (b === true) {
         this.setAttribute(HTMLElement.INVALID_ATTR_NAME, '');
     } else if (b === false) {
@@ -29,6 +30,7 @@ HTMLElement.prototype.isValid = function () {
  * @param {boolean} b
  * @returns {HTMLElement} */
 HTMLElement.prototype.setValid = function (b) {
+    this.removeAttribute(HTMLElement.INVALID_ATTR_NAME);
     if (b === true) {
         this.setAttribute(HTMLElement.VALID_ATTR_NAME, '');
     } else if (b === false) {

@@ -50,7 +50,7 @@
     --text-dark: #3a2c1a;
     --text-medium: #4b3c2a;
     --text-light: #5a4b34;
-    --text-warning: #dc0d0d;
+    --text-warning: #d32f2f;
 
     /* =========================================
        Background Colors & Pattern
@@ -63,6 +63,8 @@
     --border-brown: #a67c52;
     --border-focus: #8c6d3f;
     --border-hover: #c3a46f;
+    --border-invalid: #d32f2f;
+    --border-valid: #388e3c;
 
     /* =========================================
        Toggle Button

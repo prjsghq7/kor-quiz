@@ -100,16 +100,20 @@
     display: none;
 }
 
-#registerExtraForm > .input-pair-wrapper > .input-pair > .warning {
+#registerExtraForm .input-pair > .textarea {
+    height: 10rem;
+}
+
+#registerExtraForm .input-pair > .warning {
     position: absolute;
     right: 0;
 
     color: var(--text-warning);
-    font-weight: 500;
+    font-weight: 600;
     display: none;
 }
 
-#registerExtraForm > .input-pair-wrapper > .input-pair > .warning[data-state-visible] {
+#registerExtraForm .input-pair > .warning[data-state-visible] {
     display: block;
 }
 
@@ -118,7 +122,7 @@
     width: auto;
     height: 2.75rem;
     white-space: nowrap;
-    border-radius: 0.125rem;
+    border-radius: 0.5rem;
 }
 
 #registerExtraForm > .button-container {
@@ -126,7 +130,7 @@
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
-    justify-content: flex-end;
+    justify-content: center;
 
-    margin-top: 1rem;
+    margin-top: 2rem;
 }

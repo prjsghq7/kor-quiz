@@ -59,16 +59,28 @@ body:has(.-object-dialog.visible) {
 }
 
 .-object-dialog > .--modal > .--title {
-    font-size: 1.25rem;
+    font-size: 1.625rem;
     font-weight: bold;
     color: var(--text-dark);
     border-bottom: 1px solid var(--border-hover);
     padding-bottom: 0.5rem;
 }
 
+
+.-object-dialog > .--modal > .--content {
+    font-weight: 400;
+    font-size: 1.125rem;
+}
+
 .-object-dialog > .--modal > .--button-container {
     margin-top: 1rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 0.5rem;
+}
+
+.-object-dialog > .--modal > .--button-container > .-object-button {
+    min-width: 5rem;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
 }

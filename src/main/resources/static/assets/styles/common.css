@@ -4,6 +4,7 @@
 
 @import "common/common-color.css";
 @import "common/object/object-button.css";
+@import "common/object/object-check.css";
 @import "common/object/object-dialog.css";
 
 * {
@@ -27,9 +28,13 @@ body {
     background-attachment: scroll;
     background-position: top left;
     position: relative;
-    overflow: hidden;
     background-color: var(--base-bg);
     color: var(--text-dark);
+
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
 }
 
 a[href] {
@@ -64,32 +69,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #overlay {
-    position: absolute;
+    position: fixed;
+    width: 100%;
+    height: 100%;
     inset: 0;
     background-color: var(--overlay-bg-color);
     z-index: 0;
 }
 
 #main-card {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+    margin: auto;
 
-    padding: 2.5rem;
+    padding: 2.25rem;
     width: 40rem;
     border: 0.1875rem solid var(--border-brown);
 
     background-color: var(--base-bg);
-    /*background-image:*/
-    /*        url('../images/card-hanji-texture.png'),*/
-    /*        repeating-linear-gradient(*/
-    /*                45deg,*/
-    /*                var(--base-pattern-a),*/
-    /*                var(--base-pattern-a) 0.625rem,*/
-    /*                var(--base-pattern-b) 0.625rem,*/
-    /*                var(--base-pattern-b) 1.25rem*/
-    /*        );*/
     background-image: url('../images/card-hanji-texture.png');
     background-blend-mode: multiply;
     background-size: cover, auto;
@@ -108,11 +107,12 @@ h1, h2, h3, h4, h5, h6 {
 
 input[type="date"],
 input[type="text"] {
+    font: inherit;
     width: 100%;
     padding: 0.4375rem 0.75rem;
     font-size: 1.125rem;
     font-weight: 500;
-    border: 1px solid var(--border-hover);
+    border: 0.0625rem solid var(--border-brown);
     border-radius: 0.5rem;
     outline: none;
     background-color: var(--input-bg-color);
@@ -123,9 +123,40 @@ input[type="date"]:focus,
 input[type="text"]:focus {
     border-color: var(--border-focus);
     outline: 0.125rem solid var(--border-focus);
-    box-shadow: 0 0 0 2px var(--shadow-focus);
+    box-shadow: 0 0 0 0.125rem var(--shadow-focus);
 }
 
+input[type="date"][data-state-invalid],
+input[type="text"][data-state-invalid] {
+    border: 0.0625rem solid var(--border-invalid);
+    outline: 0.125rem solid var(--border-invalid);
+}
+
+input[type="date"][data-state-valid],
+input[type="text"][data-state-valid] {
+    border: 0.0625rem solid var(--border-valid);
+    outline: 0.125rem solid var(--border-valid);
+}
+
+textarea {
+    font: inherit;
+    padding: 0.5rem 0.5rem;
+    width: 100%;
+    border: 0.0625rem solid var(--border-brown);
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    outline: none;
+    background-color: var(--input-bg-color);
+    color: var(--text-dark);
+    resize: none;
+    overflow: auto;
+
+    scrollbar-color: var(--border-brown) var(--base-bg);
+}
+textarea[data-state-invalid] {
+    border: 0.0625rem solid var(--border-invalid);
+    outline: 0.125rem solid var(--border-invalid);
+}
 
 .night-toggle {
     width: 8rem;
@@ -136,4 +167,9 @@ input[type="text"]:focus {
     border-radius: 0.5rem;
     cursor: pointer;
     font-size: 0.9rem;
+}
+
+.-stretch {
+    flex-shrink: 1;
+    flex-grow: 1;
 }
