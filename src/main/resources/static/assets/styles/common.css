@@ -93,6 +93,7 @@ h1, h2, h3, h4, h5, h6 {
     background-blend-mode: multiply;
     background-size: cover, auto;
     color: var(--text-dark);
+    z-index: 1;
 }
 
 .night-mode #main-card {
@@ -102,6 +103,7 @@ h1, h2, h3, h4, h5, h6 {
 .title {
     font-size: 2.125rem;
     font-weight: 600;
+    color: var(--text-dark);
 }
 
 

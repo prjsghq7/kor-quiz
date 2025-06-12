@@ -1,4 +1,4 @@
-package com.kgh.korquiz.regexes.user;
+package com.kgh.korquiz.results.user;
 
 import com.kgh.korquiz.results.Result;
 

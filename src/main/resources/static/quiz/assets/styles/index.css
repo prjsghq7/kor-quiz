@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+#main-card {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: flex-start;
+}
+
+#main-card > .title {
+    margin-bottom: 1rem;
+}
+
+#main-card > .button-container {
+    height: 5rem;
+
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: stretch;
+}
+
+#main-card > .button-container > .-object-button {
+    width: 100%;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>한글 단어 퀴즈</title>
+    <link href="/assets/styles/common.css" rel="stylesheet" type="text/css">
+    <link href="/quiz/assets/styles/register.css" rel="stylesheet" type="text/css">
+    <script src="/assets/scripts/common.js" type="text/javascript"></script>
+    <script defer src="/assets/scripts/dialog.js" type="text/javascript"></script>
+    <script defer src="/assets/scripts/night-mode.js" type="text/javascript"></script>
+    <script defer src="/quiz/assets/scripts/register.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="overlay"></div>
+<div id="main-card" class="index">
+    <h1 class="title">한글 단어 퀴즈</h1>
+
+    <!-- 단어 검색 입력 영역 -->
+    <form novalidate id="searchForm">
+        <div class="input-pair-wrapper">
+            <div class="input-pair">
+                <label class="label" for="keyword">단어 검색</label>
+                <input required autocomplete="off" type="text" id="keyword" class="input-text" name="keyword" placeholder="단어를 입력하세요" th:pattern="${T(com.kgh.korquiz.regexes.QuizRegex).answer.pattern}"/>
+                <span class="warning"></span>
+            </div>
+            <button class="-object-button --brown" type="submit">검색</button>
+        </div>
+    </form>
+
+    <!-- 검색 결과 리스트 (quizzes 테이블 일부 값 표출) -->
+    <table class="quiz-table">
+        <thead>
+        <tr>
+            <th>코드</th>
+            <th>단어</th>
+            <th>품사</th>
+            <th>어휘 등급</th>
+            <th>추가</th>
+        </tr>
+        </thead>
+        <tbody id="quizResultTable">
+        <tr>
+            <td>141315</td>
+            <td>가나다</td>
+            <td>명사</td>
+            <td>초급</td>
+            <td><button class="-object-button --green">추가</button></td>
+        </tr>
+        <tr>
+            <td>0123414</td>
+            <td>라마바사</td>
+            <td>명사</td>
+            <td>중급</td>
+            <td><button class="-object-button">추가</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@ package com.kgh.korquiz.services;
 import com.kgh.korquiz.entities.UserEntity;
 import com.kgh.korquiz.mappers.UserMapper;
 import com.kgh.korquiz.regexes.UserRegex;
-import com.kgh.korquiz.regexes.user.RegisterResult;
+import com.kgh.korquiz.results.user.RegisterResult;
 import com.kgh.korquiz.results.CommonResult;
 import com.kgh.korquiz.results.Result;
 import org.springframework.security.oauth2.core.user.OAuth2User;

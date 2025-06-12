@@ -47,7 +47,7 @@
     /* =========================================
        Text Colors
     ========================================= */
-    --text-dark: #3a2c1a;
+    --text-dark: #2d1a05;
     --text-medium: #4b3c2a;
     --text-light: #5a4b34;
     --text-warning: #d32f2f;
@@ -72,6 +72,23 @@
     --toggle-bg: #fff;
     --toggle-text: #000;
     --toggle-border: #aaa;
+
+
+    /* =========================================
+        Table
+    ========================================= */
+    --table-bg: #fefcf7;
+    --table-text: #3a2e2a;
+    --table-border: #d6c9a6;
+    --table-shadow: rgba(0,0,0,0.05);
+
+    --table-th-bg: #f3e5c0;
+    --table-th-text: #4a372d;
+    --table-th-border: #bca987;
+
+    --table-td-border: #e0d8b0;
+    --table-tr-even: #fcf9f3;
+    --table-tr-odd: #f8f1dc;
 }
 
 /* =========================================
@@ -123,7 +140,7 @@
     --overlay-bg-color: #00000055;
     --input-bg-color: #5f4b2f;
 
-    --text-dark: #f0e8d9;
+    --text-dark: #f4f3e5;
     --text-medium: #f0e8d9;
     --text-light: #f0e8d9;
 
@@ -139,4 +156,17 @@
     --toggle-bg: #333;
     --toggle-text: #fff;
     --toggle-border: #777;
+
+    --table-bg: #2f2b24;
+    --table-text: #f3eadc;
+    --table-border: #8c7e60;
+    --table-shadow: rgba(255,255,255,0.05);
+
+    --table-th-bg: #4f4633;
+    --table-th-text: #f8f0d8;
+    --table-th-border: #9f8f68;
+
+    --table-td-border: #776b52;
+    --table-tr-even: #3a3224;
+    --table-tr-odd: #443b2c;
 }
