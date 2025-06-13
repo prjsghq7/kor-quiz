@@ -1,4 +1,59 @@
 const $searchForm = document.getElementById('searchForm');
+const $quizTable = document.getElementById('quizTable');
+
+const updateQuizTable = (quizDtos) => {
+    console.log(quizDtos);
+    const $tbody = $quizTable.querySelector(':scope > tbody');
+    $tbody.innerHTML = '';
+    let tbodyHtml = ``;
+    for (const quizDto of quizDtos) {
+        let $tr = `
+        <tr>
+            <td>${quizDto['quiz']['code']}</td>
+            <td>${quizDto['quiz']['answer']}</td>
+            <td>${quizDto['quiz']['partOfSpeach']}</td>
+            <td>${quizDto['quiz']['wordGrade']}</td>
+            <td>
+                <button class="-object-button --green" data-show-detail>상세정보 보기</button>
+            </td>
+        </tr>
+        <tr class="detail-row" data-target-code="${quizDto['quiz']['code']}">
+            <td colspan="4">
+                <div class="meanings-wrapper">`;
+
+        const meanings = quizDto['meanings'];
+        for (const meaning of meanings) {
+            $tr += `
+                <span class="lang">${meaning['languageName']}</span>
+                <p class="def">${meaning['definition']}</p>
+            `;
+        }
+
+        $tr += `
+                </div>
+             </td>
+             <td><button class="-object-button --green">추가하기</button></td>
+        </tr>`;
+        tbodyHtml += $tr;
+    }
+    $tbody.innerHTML = tbodyHtml;
+
+    $tbody.querySelectorAll(':scope .-object-button[data-show-detail]').forEach(($button) => {
+        $button.addEventListener('click', () => {
+            const code = $button.closest('tr').children[0].textContent;
+            const $detailRow = $tbody.querySelector(
+                `tr.detail-row[data-target-code="${code}"]`
+            );
+            if ($detailRow.hasAttribute('data-state-visible')) {
+                $button.innerHTML = '상세정보 보기'
+                $detailRow.removeAttribute('data-state-visible');
+            } else {
+                $button.innerHTML = '상세정보 닫기'
+                $detailRow.setAttribute('data-state-visible', '');
+            }
+        });
+    });
+};
 
 $searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -35,7 +90,7 @@ $searchForm.addEventListener('submit', (e) => {
                 dialog.showSimpleOk('경고', '알 수 없는 이유로 단어 검색에 실패 하였습니다.\n잠시 후 다시 시도해 주세요.');
                 break;
             case 'success':
-                alert("GOOD");
+                updateQuizTable(response.quizDtos);
                 break;
             default:
                 dialog.showSimpleOk('경고', '알 수 없는 이유로 단어 검색에 실패 하였습니다.\n잠시 후 다시 시도해 주세요.');

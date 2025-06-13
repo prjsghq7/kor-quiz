@@ -129,6 +129,52 @@
     background-color: var(--table-tr-odd);
 }
 
+.quiz-table tr.detail-row {
+    display: none;
+}
+
+.quiz-table tr.detail-row[data-state-visible] {
+    display: table-row;
+}
+
+.quiz-table tr.detail-row > td > .meanings-wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    background-color: var(--table-bg);
+}
+
+.quiz-table tr.detail-row > td > .meanings-wrapper > .lang:first-of-type {
+    border-top: 0.125rem solid var(--table-border);
+    border-top-left-radius: 0.25rem;
+}
+.quiz-table tr.detail-row > td > .meanings-wrapper > .def:first-of-type {
+    border-top: 0.125rem solid var(--table-border);
+    border-top-right-radius: 0.25rem;
+}
+.quiz-table tr.detail-row > td > .meanings-wrapper > .lang:last-of-type {
+    border-bottom: 0.125rem solid var(--table-border);
+    border-bottom-left-radius: 0.25rem;
+}
+.quiz-table tr.detail-row > td > .meanings-wrapper > .def:last-of-type {
+    border-bottom: 0.125rem solid var(--table-border);
+    border-bottom-right-radius: 0.25rem;
+}
+
+.quiz-table tr.detail-row > td > .meanings-wrapper > .lang {
+    padding: 0.125rem 0.375rem;
+    font-weight: 500;
+    border-left: 0.125rem solid var(--table-border);
+    border-bottom: 0.0625rem solid var(--table-border);
+    border-right: 0.0625rem solid var(--table-border);
+}
+
+.quiz-table tr.detail-row > td > .meanings-wrapper > .def {
+    padding: 0.125rem 0.25rem;
+    white-space: break-spaces;
+    border-bottom: 0.0625rem solid var(--table-border);
+    border-right: 0.125rem solid var(--table-border);
+}
+
 .quiz-table .-object-button {
     padding: 0.125rem 0.375rem;
     font-size: 0.9rem;
