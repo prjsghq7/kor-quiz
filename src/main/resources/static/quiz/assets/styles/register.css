@@ -137,30 +137,30 @@
     display: table-row;
 }
 
-.quiz-table tr.detail-row > td > .meanings-wrapper {
+.quiz-table tr.detail-row > td > .register-form {
     display: grid;
     grid-template-columns: auto 1fr;
     background-color: var(--table-bg);
 }
 
-.quiz-table tr.detail-row > td > .meanings-wrapper > .lang:first-of-type {
+.quiz-table tr.detail-row > td > .register-form > .lang:first-of-type {
     border-top: 0.125rem solid var(--table-border);
     border-top-left-radius: 0.25rem;
 }
-.quiz-table tr.detail-row > td > .meanings-wrapper > .def:first-of-type {
+.quiz-table tr.detail-row > td > .register-form > .def:first-of-type {
     border-top: 0.125rem solid var(--table-border);
     border-top-right-radius: 0.25rem;
 }
-.quiz-table tr.detail-row > td > .meanings-wrapper > .lang:last-of-type {
+.quiz-table tr.detail-row > td > .register-form > .lang:last-of-type {
     border-bottom: 0.125rem solid var(--table-border);
     border-bottom-left-radius: 0.25rem;
 }
-.quiz-table tr.detail-row > td > .meanings-wrapper > .def:last-of-type {
+.quiz-table tr.detail-row > td > .register-form > .def:last-of-type {
     border-bottom: 0.125rem solid var(--table-border);
     border-bottom-right-radius: 0.25rem;
 }
 
-.quiz-table tr.detail-row > td > .meanings-wrapper > .lang {
+.quiz-table tr.detail-row > td > .register-form > .lang {
     padding: 0.125rem 0.375rem;
     font-weight: 500;
     border-left: 0.125rem solid var(--table-border);
@@ -168,7 +168,7 @@
     border-right: 0.0625rem solid var(--table-border);
 }
 
-.quiz-table tr.detail-row > td > .meanings-wrapper > .def {
+.quiz-table tr.detail-row > td > .register-form > .def {
     padding: 0.125rem 0.25rem;
     white-space: break-spaces;
     border-bottom: 0.0625rem solid var(--table-border);

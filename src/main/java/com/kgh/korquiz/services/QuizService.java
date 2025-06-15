@@ -3,9 +3,16 @@ package com.kgh.korquiz.services;
 import com.kgh.korquiz.dtos.QuizWithMeaningsDto;
 import com.kgh.korquiz.entities.MeaningEntity;
 import com.kgh.korquiz.entities.QuizEntity;
+import com.kgh.korquiz.mappers.MeaningMapper;
+import com.kgh.korquiz.mappers.QuizMapper;
+import com.kgh.korquiz.results.CommonResult;
+import com.kgh.korquiz.results.Result;
+import com.kgh.korquiz.results.quiz.RegisterResult;
 import com.kgh.korquiz.utils.NodeListConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -36,6 +43,14 @@ public class QuizService {
     private static final String PART = "word";
     private static final String TRANSLATED = "Y";
     private static final String TRANS_LANG = "0";
+
+    private final QuizMapper quizMapper;
+    private final MeaningMapper meaningMapper;
+
+    public QuizService(QuizMapper quizMapper, MeaningMapper meaningMapper) {
+        this.quizMapper = quizMapper;
+        this.meaningMapper = meaningMapper;
+    }
 
     private String getText(Element parent, String tag) {
         NodeList node = parent.getElementsByTagName(tag);
@@ -94,10 +109,6 @@ public class QuizService {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String xml = response.body();
 
-        System.out.println("요청 URL: " + url);
-        System.out.println("응답 상태 코드: " + response.statusCode());
-        System.out.println("응답 본문 내용:\n" + xml);
-
         // XML 파싱
         DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         Document doc = builder.parse(new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)));
@@ -129,9 +140,11 @@ public class QuizService {
             Element[] senses = NodeListConverter.toElementArray(item.getElementsByTagName("sense"));
             for (Element sense : senses) {
                 String definition = getText(sense, "definition");
-                if (definition == null) {
+                String strOrderNo = getText(sense, "sense_order");
+                if (definition == null || strOrderNo == null) {
                     return null;
                 }
+                int orderNo = Integer.parseInt(strOrderNo);
 
                 meaningList.add(MeaningEntity
                         .builder()
@@ -139,26 +152,25 @@ public class QuizService {
                         .languageCode(0)
                         .languageName("한국어")
                         .definition(definition)
-                        .orderNo(0)
+                        .orderNo(orderNo)
                         .build());
 
                 Element[] translations = NodeListConverter.toElementArray(sense.getElementsByTagName("translation"));
                 for (Element trans : translations) {
                     String langName = getText(trans, "trans_lang");
-                    String transDef = getText(trans, "trans_dfn");
+                    String transDfn = getText(trans, "trans_dfn");
 
-                    if (langName == null || transDef == null) {
+                    if (langName == null || transDfn == null) {
                         return null;
                     }
-
+                    langName = langName.trim();
                     int langCode = convertLangNameToCode(langName);
-                    int orderNo = meaningList.size() + 1;
 
                     MeaningEntity meaning = new MeaningEntity();
                     meaning.setTargetCode(targetCode);
                     meaning.setLanguageCode(langCode);
                     meaning.setLanguageName(langName);
-                    meaning.setDefinition(transDef);
+                    meaning.setDefinition(transDfn);
                     meaning.setOrderNo(orderNo);
                     meaningList.add(meaning);
                 }
@@ -175,4 +187,27 @@ public class QuizService {
         return result.toArray(new QuizWithMeaningsDto[result.size()]);
     }
 
+
+    @Transactional
+    public Result register(QuizWithMeaningsDto quizWithMeaningsDto) {
+        QuizEntity quiz = quizWithMeaningsDto.getQuiz();
+
+        if(this.quizMapper.selectCountByCode(quiz.getCode()) > 0) {
+            return RegisterResult.FAILURE_DUPLICATE_QUIZ;
+        }
+
+        if (this.quizMapper.insertQuiz(quiz) < 1) {
+            return CommonResult.FAILURE;
+        }
+
+        MeaningEntity[] meanings = quizWithMeaningsDto.getMeanings();
+        for (MeaningEntity meaning : meanings) {
+            if (meaningMapper.insertMeaning(meaning) < 1) {
+                TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+                return CommonResult.FAILURE;
+            }
+        }
+
+        return CommonResult.SUCCESS;
+    }
 }

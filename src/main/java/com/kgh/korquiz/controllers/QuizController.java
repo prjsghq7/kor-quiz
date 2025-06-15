@@ -2,6 +2,7 @@ package com.kgh.korquiz.controllers;
 
 import com.kgh.korquiz.dtos.QuizWithMeaningsDto;
 import com.kgh.korquiz.results.CommonResult;
+import com.kgh.korquiz.results.Result;
 import com.kgh.korquiz.services.QuizService;
 import jakarta.servlet.http.HttpSession;
 import net.minidev.json.JSONObject;
@@ -40,7 +41,23 @@ public class QuizController {
         return response.toString();
     }
 
+    @RequestMapping(value = "/solve", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    public String getSolve(HttpSession session) {
+        if (session.getAttribute("signedUser") == null) {
+            return "home/index";
+        }
+        return "quiz/solve";
+    }
 
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String postRegister(QuizWithMeaningsDto quizWithMeaningsDto) {
+        Result result = this.quizService.register(quizWithMeaningsDto);
+        JSONObject response = new JSONObject();
+        response.put("result", result.nameToLower());
+        return response.toString();
+    }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
     public String getRegister(HttpSession session) {

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kgh.korquiz.mappers.QuizMapper">
+
+    <select id="selectCountByCode" resultType="java.lang.Integer">
+        SELECT COUNT(0)
+        FROM `kor-quiz`.`quizzes`
+        WHERE `code` = #{code}
+    </select>
+
+    <insert id="insertQuiz">
+        INSERT INTO `kor-quiz`.`quizzes` (`code`, `answer`, `part_of_speach`, `word_grade`)
+        VALUES (#{quiz.code}, #{quiz.answer}, #{quiz.partOfSpeach}, #{quiz.wordGrade})
+    </insert>
+
+</mapper>

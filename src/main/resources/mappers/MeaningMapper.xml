@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kgh.korquiz.mappers.MeaningMapper">
+
+    <insert id="insertMeaning"
+            useGeneratedKeys="true"
+            keyColumn="meaning_id"
+            keyProperty="meaningId">
+        INSERT INTO `kor-quiz`.`meanings` (target_code, language_code, language_name, definition, order_no)
+        VALUES (#{meanings.targetCode}, #{meanings.languageCode}, #{meanings.languageName}, #{meanings.definition}, #{meanings.orderNo})
+    </insert>
+
+</mapper>
