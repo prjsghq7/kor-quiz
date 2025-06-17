@@ -89,6 +89,20 @@
     --table-td-border: #e0d8b0;
     --table-tr-even: #fcf9f3;
     --table-tr-odd: #f8f1dc;
+
+
+    /* =========================================
+        Filter
+    ========================================= */
+    --fiter-bg: #f3e5c0;
+    --fiter-type-bg: #c7a86e;
+
+    /*--radio-accent: var(--btn-green-bottom);*/
+    /*--radio-bg: var(--input-bg-color);*/
+    /*--radio-bg-hover: var(--btn-green-top);*/
+    --radio-accent: var(--btn-green-bottom);
+    --radio-bg: var(--input-bg-color);
+    --radio-bg-hover: var(--btn-green-top);
 }
 
 /* =========================================
@@ -169,4 +183,7 @@
     --table-td-border: #776b52;
     --table-tr-even: #3a3224;
     --table-tr-odd: #443b2c;
+
+    --fiter-bg: #4f4633;
+    --fiter-type-bg: #6a4b1a;
 }

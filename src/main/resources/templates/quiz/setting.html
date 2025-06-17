@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+    <title>한글 단어 퀴즈</title>
+    <link href="/assets/styles/common.css" rel="stylesheet" type="text/css">
+    <link href="/quiz/assets/styles/setting.css" rel="stylesheet" type="text/css">
+    <script src="/assets/scripts/common.js" type="text/javascript"></script>
+    <script defer src="/assets/scripts/dialog.js" type="text/javascript"></script>
+    <script defer src="/assets/scripts/night-mode.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="overlay"></div>
+<div id="main-card" class="index">
+    <h1 class="title">한글 단어 퀴즈</h1>
+
+    <form id="quizSettingForm">
+        <div class="filter-wrapper">
+            <h3 class="filter-type">난이도 선택</h3>
+            <div class="filter">
+                <label>
+                    <input type="radio" name="wordGrade" value="" checked>
+                    <span>전체</span>
+                </label>
+                <label>
+                    <input type="radio" name="wordGrade" value="초급">
+                    <span>초급</span>
+                </label>
+                <label>
+                    <input type="radio" name="wordGrade" value="중급">
+                    <span>중급</span>
+                </label>
+                <label>
+                    <input type="radio" name="wordGrade" value="고급">
+                    <span>고급</span>
+                </label>
+                <label>
+                    <input type="radio" name="wordGrade" value="미정">
+                    <span>미정</span>
+                </label>
+            </div>
+
+            <h3 class="filter-type">품사 선택</h3>
+            <div class="filter">
+                <label>
+                    <input type="radio" name="partOfSpeach" value="" checked>
+                    <span>전체</span>
+                </label>
+                <label>
+                    <input type="radio" name="partOfSpeach" value="명사">
+                    <span>명사</span>
+                </label>
+                <label>
+                    <input type="radio" name="partOfSpeach" value="형용사">
+                    <span>형용사</span>
+                </label>
+                <label>
+                    <input type="radio" name="partOfSpeach" value="부사">
+                    <span>부사</span>
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="-object-button --green">문제 출제</button>
+    </form>
+</div>
+</body>
+</html>

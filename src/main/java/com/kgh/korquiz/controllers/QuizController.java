@@ -41,12 +41,12 @@ public class QuizController {
         return response.toString();
     }
 
-    @RequestMapping(value = "/solve", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    @RequestMapping(value = "/setting", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
     public String getSolve(HttpSession session) {
         if (session.getAttribute("signedUser") == null) {
             return "home/index";
         }
-        return "quiz/solve";
+        return "quiz/setting";
     }
 
 
