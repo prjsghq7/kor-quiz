@@ -1,17 +1,5 @@
 @charset "UTF-8";
 
-#main-card {
-    align-items: stretch;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    justify-content: flex-start;
-}
-
-#main-card > .title {
-    margin-bottom: 1rem;
-}
-
 #searchForm {
     align-items: stretch;
     display: flex;

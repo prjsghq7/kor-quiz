@@ -11,4 +11,5 @@ public class QuizEntity {
     private String answer;
     private String partOfSpeach;
     private String wordGrade;
+    private String link;
 }

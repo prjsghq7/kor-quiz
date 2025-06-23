@@ -1,12 +1,18 @@
 package com.kgh.korquiz.services;
 
+import com.kgh.korquiz.dtos.QuizFilterDto;
+import com.kgh.korquiz.dtos.QuizResultDto;
 import com.kgh.korquiz.dtos.QuizWithMeaningsDto;
 import com.kgh.korquiz.entities.MeaningEntity;
 import com.kgh.korquiz.entities.QuizEntity;
+import com.kgh.korquiz.entities.QuizHistoryEntity;
+import com.kgh.korquiz.entities.UserEntity;
 import com.kgh.korquiz.mappers.MeaningMapper;
+import com.kgh.korquiz.mappers.QuizHistoryMapper;
 import com.kgh.korquiz.mappers.QuizMapper;
 import com.kgh.korquiz.results.CommonResult;
 import com.kgh.korquiz.results.Result;
+import com.kgh.korquiz.results.ResultTuple;
 import com.kgh.korquiz.results.quiz.RegisterResult;
 import com.kgh.korquiz.utils.NodeListConverter;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,6 +35,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,10 +53,12 @@ public class QuizService {
 
     private final QuizMapper quizMapper;
     private final MeaningMapper meaningMapper;
+    private final QuizHistoryMapper quizHistoryMapper;
 
-    public QuizService(QuizMapper quizMapper, MeaningMapper meaningMapper) {
+    public QuizService(QuizMapper quizMapper, MeaningMapper meaningMapper, QuizHistoryMapper quizHistoryMapper) {
         this.quizMapper = quizMapper;
         this.meaningMapper = meaningMapper;
+        this.quizHistoryMapper = quizHistoryMapper;
     }
 
     private String getText(Element parent, String tag) {
@@ -91,6 +100,65 @@ public class QuizService {
         }
     }
 
+    public ResultTuple<QuizResultDto> getQuizResult(UserEntity signedUser,
+                                                    String code,
+                                                    String userAnswer) {
+        if (signedUser == null
+                || signedUser.isDeleted()
+                || signedUser.isSuspended()) {
+            return ResultTuple.<QuizResultDto>builder()
+                    .result(CommonResult.FAILURE_SESSION_EXPIRED)
+                    .build();
+        }
+
+        QuizEntity quiz = this.quizMapper.selectByCode(code);
+        if (quiz == null) {
+            return ResultTuple.<QuizResultDto>builder()
+                    .result(CommonResult.FAILURE)
+                    .build();
+        }
+
+        QuizHistoryEntity quizHistory = new QuizHistoryEntity();
+        quizHistory.setUserId(signedUser.getId());
+        quizHistory.setQuizCode(code);
+        quizHistory.setUserAnswer(userAnswer);
+        quizHistory.setCorrect(quiz.getAnswer().equals(userAnswer));
+        quizHistory.setSolvedAt(LocalDateTime.now());
+        if (this.quizHistoryMapper.insertQuizHistory(quizHistory) < 1) {
+            return ResultTuple.<QuizResultDto>builder()
+                    .result(CommonResult.FAILURE)
+                    .build();
+        }
+
+        QuizResultDto quizResultDto = new QuizResultDto();
+        quizResultDto.setCorrect(quizHistory.isCorrect());
+        quizResultDto.setUserAnswer(quizHistory.getUserAnswer());
+        quizResultDto.setCorrectAnswer(quiz.getAnswer());
+        quizResultDto.setLink(quiz.getLink());
+
+        return ResultTuple.<QuizResultDto>builder()
+                .result(CommonResult.SUCCESS)
+                .payload(quizResultDto)
+                .build();
+    }
+
+    public MeaningEntity[] getMeanings(String targetCode, int languageCode) {
+        return this.meaningMapper.selectByTargetCodeAndLanguageCode(targetCode, languageCode);
+    }
+
+    public QuizEntity getRandomQuiz(QuizFilterDto quizFilterDto) {
+        if (quizFilterDto == null) {
+            return null;
+        }
+        if (quizFilterDto.getWordGrade() == null || quizFilterDto.getWordGrade().isEmpty()) {
+            quizFilterDto.setWordGrade("all");
+        }
+        if (quizFilterDto.getPartOfSpeach() == null || quizFilterDto.getPartOfSpeach().isEmpty()) {
+            quizFilterDto.setPartOfSpeach("all");
+        }
+        return this.quizMapper.selectRandomByFilter(quizFilterDto);
+    }
+
     public QuizWithMeaningsDto[] searchExternalByKeyword(String keyword) throws IOException, InterruptedException, ParserConfigurationException, SAXException {
         String encodedKeyword = URLEncoder.encode(keyword, StandardCharsets.UTF_8);
 
@@ -124,16 +192,17 @@ public class QuizService {
             String word = getText(item, "word");
             String pos = getText(item, "pos");
             String grade = getText(item, "word_grade");
+            String link = getText(item, "link");
 
 
-            if (targetCode == null || word == null || pos == null) {
+            if (targetCode == null || word == null || pos == null || link == null) {
                 return null;
             }
             if (grade == null) {
                 grade = "미정";
             }
 
-            QuizEntity quiz = new QuizEntity(targetCode, word, pos, grade);
+            QuizEntity quiz = new QuizEntity(targetCode, word, pos, grade, link);
 
             List<MeaningEntity> meaningList = new ArrayList<>();
 

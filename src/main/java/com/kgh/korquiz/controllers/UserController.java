@@ -30,7 +30,8 @@ public class UserController {
     public String getRegisterExtra(HttpSession session, Model model) {
         OAuth2User oauthUser = (OAuth2User) session.getAttribute("oauthUser");
         if (oauthUser == null) {
-            return "redirect:/login?error=session_expired";
+            return "user/register-extra";
+//            return "redirect:/login?error=session_expired";
         }
         oauthUser.getAttributes().forEach((key, value) -> {
             System.out.println(key + " = " + value);

@@ -2,6 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.kgh.korquiz.mappers.QuizMapper">
 
+    <select id="selectRandomByFilter" resultType="com.kgh.korquiz.entities.QuizEntity">
+        SELECT `code`           AS `code`,
+               `answer`         AS `answer`,
+               `part_of_speach` AS `partOfSpeach`,
+               `word_grade`     AS `wordGrade`,
+               `link`           AS `link`
+        FROM `kor-quiz`.`quizzes`
+        <where>
+            <if test="QuizFilterDto.wordGrade != 'all'">
+                word_grade = #{QuizFilterDto.wordGrade}
+            </if>
+            <if test="QuizFilterDto.partOfSpeach != 'all'">
+                <if test="QuizFilterDto.wordGrade != 'all'">
+                    AND
+                </if>
+                part_of_speach = #{QuizFilterDto.partOfSpeach}
+            </if>
+        </where>
+        ORDER BY RAND()
+        LIMIT 1
+    </select>
+
+    <select id="selectByCode" resultType="com.kgh.korquiz.entities.QuizEntity">
+        SELECT `code`           AS `code`,
+               `answer`         AS `answer`,
+               `part_of_speach` AS `partOfSpeach`,
+               `word_grade`     AS `wordGrade`,
+               `link`           AS `link`
+        FROM `kor-quiz`.`quizzes`
+        WHERE `code` = #{code}
+        LIMIT 1
+    </select>
+
     <select id="selectCountByCode" resultType="java.lang.Integer">
         SELECT COUNT(0)
         FROM `kor-quiz`.`quizzes`
@@ -9,8 +42,8 @@
     </select>
 
     <insert id="insertQuiz">
-        INSERT INTO `kor-quiz`.`quizzes` (`code`, `answer`, `part_of_speach`, `word_grade`)
-        VALUES (#{quiz.code}, #{quiz.answer}, #{quiz.partOfSpeach}, #{quiz.wordGrade})
+        INSERT INTO `kor-quiz`.`quizzes` (`code`, `answer`, `part_of_speach`, `word_grade`, `link`)
+        VALUES (#{quiz.code}, #{quiz.answer}, #{quiz.partOfSpeach}, #{quiz.wordGrade}, #{quiz.link})
     </insert>
 
 </mapper>

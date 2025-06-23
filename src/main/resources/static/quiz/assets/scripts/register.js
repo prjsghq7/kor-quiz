@@ -26,7 +26,8 @@ const updateQuizTable = (quizDtos) => {
                     <input type="hidden" name="code" value="${quizDto['quiz']['code']}">
                     <input type="hidden" name="answer" value="${quizDto['quiz']['answer']}">
                     <input type="hidden" name="partOfSpeach" value="${quizDto['quiz']['partOfSpeach']}">
-                    <input type="hidden" name="wordGrade" value="${quizDto['quiz']['wordGrade']}">`;
+                    <input type="hidden" name="wordGrade" value="${quizDto['quiz']['wordGrade']}">
+                    <input type="hidden" name="link" value="${quizDto['quiz']['link']}">`;
 
         const meanings = quizDto['meanings'];
         let index = 0;
@@ -79,6 +80,7 @@ const updateQuizTable = (quizDtos) => {
             formData.append('quiz.answer', $registerForm['answer'].value);
             formData.append('quiz.partOfSpeach', $registerForm['partOfSpeach'].value);
             formData.append('quiz.wordGrade', $registerForm['wordGrade'].value);
+            formData.append('quiz.link', $registerForm['link'].value);
 
             // Meaning Entities
             const $targetCodes = $registerForm.querySelectorAll('input[name$=".targetCode"]');

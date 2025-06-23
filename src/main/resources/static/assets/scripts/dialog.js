@@ -82,10 +82,10 @@ class Dialog {
     /**
      * @param {string} title
      * @param {string} content
-     * @param {function(HTMLElement?)|undefined} onClickCallback
+     *     * @param {function(HTMLElement?)|undefined} onclick
      * @return {HTMLElement}
      */
-    showSimpleOk(title, content, onClickCallback= undefined) {
+    showSimpleOk(title, content, onclick= undefined) {
         return this.show({
             title: title,
             content: content,
@@ -93,6 +93,9 @@ class Dialog {
                 {
                     caption: '확인',
                     onClickCallback: ($modal) => {
+                        if (typeof onclick === 'function') {
+                            onclick($modal);
+                        }
                         this.hide($modal);
                     }
                 }

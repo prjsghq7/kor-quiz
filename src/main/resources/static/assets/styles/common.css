@@ -6,6 +6,7 @@
 @import "common/object/object-button.css";
 @import "common/object/object-check.css";
 @import "common/object/object-dialog.css";
+@import "common/object/toggle-switch.css";
 
 * {
     margin: 0;
@@ -94,6 +95,16 @@ h1, h2, h3, h4, h5, h6 {
     background-size: cover, auto;
     color: var(--text-dark);
     z-index: 1;
+
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: flex-start;
+}
+
+#main-card > .title {
+    margin-bottom: 1rem;
 }
 
 .night-mode #main-card {

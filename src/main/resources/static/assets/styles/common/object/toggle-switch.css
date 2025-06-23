@@ -1,0 +1,68 @@
+.toggle-switch {
+    display: inline-block;
+    position: relative;
+    width: 5rem;
+    height: 2rem;
+}
+
+.toggle-switch input {
+    display: none;
+}
+
+.toggle-switch .slider {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--toggle-switch-off-bg);
+    border-radius: 1rem;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+    height: 100%;
+    position: relative;
+    transition: background-color 0.3s ease;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.toggle-switch .toggle-text {
+    z-index: 2;
+}
+
+.toggle-switch .slider .on {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.toggle-switch .slider .off {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.toggle-switch .slider .knob {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: var(--toggle-switch-handle);
+    top: 0.25rem;
+    left: 0.25rem;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.toggle-switch input:checked + .slider {
+    background-color: var(--toggle-switch-on-bg);
+}
+
+.toggle-switch input:checked + .slider .on {
+    opacity: 1;
+}
+
+.toggle-switch input:checked + .slider .off {
+    opacity: 0;
+}
+
+.toggle-switch input:checked + .slider .knob {
+    transform: translateX(3rem);
+}

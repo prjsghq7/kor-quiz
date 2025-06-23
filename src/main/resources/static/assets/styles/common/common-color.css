@@ -51,11 +51,13 @@
     --text-medium: #4b3c2a;
     --text-light: #5a4b34;
     --text-warning: #d32f2f;
+    --text-link: #5e4635;
 
     /* =========================================
        Background Colors & Pattern
     ========================================= */
     --base-bg: #fffefb;
+    --baige-bg: #fdf6ec;
     --base-pattern-a: rgba(240,240,230,0.95);
     --base-pattern-b: rgba(250,250,245,0.95);
 
@@ -73,6 +75,12 @@
     --toggle-text: #000;
     --toggle-border: #aaa;
 
+    /* =========================================
+        Toggle Button - Switch
+    ========================================= */
+    --toggle-switch-on-bg: #4b8253;
+    --toggle-switch-off-bg: #b3c2a3;
+    --toggle-switch-handle: #fdf6ec;
 
     /* =========================================
         Table
@@ -97,12 +105,19 @@
     --fiter-bg: #f3e5c0;
     --fiter-type-bg: #c7a86e;
 
-    /*--radio-accent: var(--btn-green-bottom);*/
-    /*--radio-bg: var(--input-bg-color);*/
-    /*--radio-bg-hover: var(--btn-green-top);*/
     --radio-accent: var(--btn-green-bottom);
     --radio-bg: var(--input-bg-color);
     --radio-bg-hover: var(--btn-green-top);
+
+    /* =========================================
+        Result
+    ========================================= */
+    --correct-bg: #e3f9e6;
+    --correct-text: #2e7d32;
+    --correct-border: #a5d6a7;
+    --incorrect-bg: #fdecea;
+    --incorrect-text: #c0392b;
+    --incorrect-border: #ef9a9a;
 }
 
 /* =========================================
@@ -157,8 +172,10 @@
     --text-dark: #f4f3e5;
     --text-medium: #f0e8d9;
     --text-light: #f0e8d9;
+    --text-link: #f2e8d5;
 
     --base-bg: #2a2623;
+    --baige-bg: #3a2e25;
     --base-pattern-a: #2e2924;
     --base-pattern-b: #39322d;
 
@@ -170,6 +187,10 @@
     --toggle-bg: #333;
     --toggle-text: #fff;
     --toggle-border: #777;
+
+    --toggle-switch-on-bg: #a8d5b8;
+    --toggle-switch-off-bg: #566050;
+    --toggle-switch-handle: #3a2e25;
 
     --table-bg: #2f2b24;
     --table-text: #f3eadc;
@@ -186,4 +207,12 @@
 
     --fiter-bg: #4f4633;
     --fiter-type-bg: #6a4b1a;
+
+    --correct-bg: #1e2d24;
+    --correct-text: #81c784;
+    --correct-border: #2e7d32;
+
+    --incorrect-bg: #2d1f1f;
+    --incorrect-text: #ef9a9a;
+    --incorrect-border: #c0392b;
 }

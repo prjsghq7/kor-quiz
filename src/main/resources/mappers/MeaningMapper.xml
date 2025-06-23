@@ -10,4 +10,17 @@
         VALUES (#{meanings.targetCode}, #{meanings.languageCode}, #{meanings.languageName}, #{meanings.definition}, #{meanings.orderNo})
     </insert>
 
+    <select id="selectByTargetCodeAndLanguageCode">
+        SELECT `meaning_id`    AS `meaningId`,
+               `target_code`   AS `targetCode`,
+               `language_code` AS `languageCode`,
+               `language_name` AS `languageName`,
+               `definition`    AS `definition`,
+               `order_no`      AS `orderNo`
+        FROM `kor-quiz`.`meanings`
+        WHERE `target_code` = #{targetCode}
+          AND `language_code` = #{languageCode}
+        ORDER BY `order_no`
+    </select>
+
 </mapper>

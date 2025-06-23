@@ -1,22 +1,14 @@
 @charset "UTF-8";
 
-#main-card {
-    align-items: stretch;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    justify-content: flex-start;
-}
-
-#main-card > .title {
-    margin-bottom: 1rem;
-}
-
 #quizSettingForm {
     align-items: stretch;
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: stretch;
+}
+
+#quizSettingForm[data-state-visible] {
+    display: flex;
 }
 
 #quizSettingForm > .filter-wrapper {
@@ -29,6 +21,8 @@
     overflow: hidden;
     background-color: var(--fiter-bg);
     color: var(--text-dark);
+
+    flex-grow: 1;
 }
 
 #quizSettingForm > .filter-wrapper > .filter-type {
